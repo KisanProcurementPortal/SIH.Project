@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kisan Procurement Portal</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-seedling"></i>
+
+        <div>
+            <h2>Kisan Procurement Portal</h2>
+            <span>किसान खरीद पोर्टल</span>
+        </div>
+    </div>
+
+    <nav>
+
+        <button onclick="showPage('home')">
+            <i class="fa-solid fa-house"></i> Home
+        </button>
+
+        <button onclick="showPage('farmer')">
+            <i class="fa-solid fa-user"></i> Farmer Portal
+        </button>
+
+        <button onclick="showPage('sell')">
+            <i class="fa-solid fa-wheat-awn"></i> Sell Crop
+        </button>
+
+        <button onclick="showPage('track')">
+            <i class="fa-solid fa-magnifying-glass"></i> Track
+        </button>
+
+        <button onclick="showPage('adminLogin')">
+            <i class="fa-solid fa-user-shield"></i> Admin
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <span class="government-badge">
+                <i class="fa-solid fa-landmark"></i>
+                Government Procurement Service
+            </span>
+
+            <h1>
+                Kisan Procurement Portal
+            </h1>
+
+            <h2>
+                किसान खरीद पोर्टल
+            </h2>
+
+            <p>
+                Direct and transparent access to government procurement
+                services for farmers.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="showPage('farmer')">
+
+                    <i class="fa-solid fa-user"></i>
+                    Farmer Portal
+
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="showPage('adminLogin')">
+
+                    <i class="fa-solid fa-user-shield"></i>
+                    Admin Portal
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+            <h3>Smart Slot Booking</h3>
+
+            <p>
+                Book procurement slots without long queues.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <h3>Centre Recommendation</h3>
+
+            <p>
+                Get nearby procurement centre suggestions.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-wheat-awn"></i>
+
+            <h3>Crop Selling</h3>
+
+            <p>
+                List your crop for government procurement.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            <h3>Government Price</h3>
+
+            <p>
+                View applicable government procurement price.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FARMER PORTAL
+===================================================== -->
+
+<section id="farmer" class="page">
+
+    <div class="container">
+
+        <div class="page-heading">
+
+            <span class="section-badge">
+                Farmer Portal
+            </span>
+
+            <h1>
+                Farmer Registration & Slot Booking
+            </h1>
+
+            <p>
+                किसान पंजीकरण और स्लॉट बुकिंग
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <h2>
+                <i class="fa-solid fa-user"></i>
+                Farmer Details
+            </h2>
+
+
+            <form id="farmerForm" onsubmit="return false;">
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Farmer Name / किसान का नाम
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter farmer name"
+                            autocomplete="name"
+                            required>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Mobile Number / मोबाइल नंबर
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter 10 digit mobile number"
+                            inputmode="numeric"
+                            maxlength="10"
+                            minlength="10"
+                            pattern="[0-9]{10}"
+                            required>
+
+                        <small class="validation-hint">
+                            Exactly 10 digits required.
+                        </small>
+
+                    </div>
+
+
+                    <!-- AADHAAR -->
+
+                    <div class="form-group">
+
+                        <label for="farmerId">
+                            Aadhaar Number / आधार नंबर
+                        </label>
+
+                        <input
+                            type="text"
+                            id="farmerId"
+                            placeholder="Enter 12 digit Aadhaar number"
+                            inputmode="numeric"
+                            maxlength="12"
+                            minlength="12"
+                            pattern="[0-9]{12}"
+                            required>
+
+                        <small class="validation-hint">
+                            Exactly 12 digits required.
+                        </small>
+
+                    </div>
+
+
+                    <!-- VILLAGE -->
+
+                    <div class="form-group">
+
+                        <label for="village">
+                            Village / गांव
+                        </label>
+
+                        <input
+                            type="text"
+                            id="village"
+                            placeholder="Enter village name"
+                            required>
+
+                    </div>
+
+
+                    <!-- CROP -->
+
+                    <div class="form-group">
+
+                        <label for="crop">
+                            Crop Type / फसल
+                        </label>
+
+                        <select id="crop"
+                                onchange="updateFarmerRecommendations()"
+                                required>
+
+                            <option value="">
+                                Select Crop
+                            </option>
+
+                            <option value="Wheat">
+                                Wheat / गेहूं
+                            </option>
+
+                            <option value="Rice">
+                                Rice / धान
+                            </option>
+
+                            <option value="Maize">
+                                Maize / मक्का
+                            </option>
+
+                            <option value="Mustard">
+                                Mustard / सरसों
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- QUANTITY -->
+
+                    <div class="form-group">
+
+                        <label for="quantity">
+                            Expected Quantity / अनुमानित मात्रा
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            min="1"
+                            step="0.01"
+                            placeholder="Quantity in quintal"
+                            onchange="updateFarmerRecommendations()"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             CENTRE RECOMMENDATION
+        ================================================= -->
+
+        <div class="recommendation-section">
+
+            <h2>
+                <i class="fa-solid fa-location-crosshairs"></i>
+                Nearby Procurement Centres
+            </h2>
+
+            <p>
+                Enter your village to receive recommended procurement centres.
+            </p>
+
+            <div id="centreRecommendations"
+                 class="centre-grid">
+
+                <div class="info-message">
+                    Enter village name to get centre recommendations.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SLOT RECOMMENDATION
+        ================================================= -->
+
+        <div class="recommendation-section">
+
+            <h2>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Smart Slot Suggestions
+            </h2>
+
+            <p>
+                Slots are recommended according to crop and availability.
+            </p>
+
+            <div id="recommendedSlots"
+                 class="slot-cards">
+
+                <div class="info-message">
+                    Select crop and quantity to get slot recommendations.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ALL SLOTS
+        ================================================= -->
+
+        <div class="all-slots">
+
+            <h2>
+                Available Procurement Slots
+            </h2>
+
+            <div id="allSlots"
+                 class="slot-cards">
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SELECTED SLOT
+        ================================================= -->
+
+        <div class="selected-slot-box">
+
+            <h3>
+                Selected Slot
+            </h3>
+
+            <p id="selectedSlotText">
+                No slot selected.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="confirmBooking()">
+
+                <i class="fa-solid fa-check"></i>
+                Confirm Booking
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SELL CROP PAGE
+===================================================== -->
+
+<section id="sell" class="page">
+
+    <div class="container">
+
+        <div class="page-heading">
+
+            <span class="section-badge">
+                Crop Selling
+            </span>
+
+            <h1>
+                List Your Crop
+            </h1>
+
+            <p>
+                अपनी फसल सरकारी खरीद के लिए सूचीबद्ध करें।
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <h2>
+                <i class="fa-solid fa-wheat-awn"></i>
+                Crop Details
+            </h2>
+
+            <form id="cropForm"
+                  onsubmit="listCrop(event)">
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Farmer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="sellName"
+                            placeholder="Enter farmer name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="sellPhone"
+                            placeholder="10 digit mobile number"
+                            inputmode="numeric"
+                            maxlength="10"
+                            minlength="10"
+                            pattern="[0-9]{10}"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Crop
+                        </label>
+
+                        <select id="sellCrop"
+                                onchange="showGovernmentPrice()"
+                                required>
+
+                            <option value="">
+                                Select Crop
+                            </option>
+
+                            <option value="Wheat">
+                                Wheat / गेहूं
+                            </option>
+
+                            <option value="Rice">
+                                Rice / धान
+                            </option>
+
+                            <option value="Maize">
+                                Maize / मक्का
+                            </option>
+
+                            <option value="Mustard">
+                                Mustard / सरसों
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Quantity (Quintal)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="sellQuantity"
+                            min="1"
+                            step="0.01"
+                            placeholder="Enter quantity"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Village
+                        </label>
+
+                        <input
+                            type="text"
+                            id="sellVillage"
+                            placeholder="Enter village"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div id="governmentPriceBox"
+                     class="price-box">
+
+                    Select a crop to view government procurement price.
+
+                </div>
+
+
+                <button type="submit"
+                        class="primary-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+                    List Crop for Procurement
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="form-card crop-list-card">
+
+            <h2>
+                My Listed Crops
+            </h2>
+
+            <div id="listedCrops">
+                <p class="info-message">
+                    No crops listed yet.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRACK PAGE
+===================================================== -->
+
+<section id="track" class="page">
+
+    <div class="container">
+
+        <div class="page-heading">
+
+            <span class="section-badge">
+                Tracking
+            </span>
+
+            <h1>
+                Track Your Booking
+            </h1>
+
+            <p>
+                Booking ID या mobile number से स्थिति देखें।
+            </p>
+
+        </div>
+
+
+        <div class="track-box">
+
+            <input
+                type="text"
+                id="searchBooking"
+                placeholder="Enter Booking ID or Mobile Number">
+
+            <button
+                class="primary-btn"
+                onclick="trackBooking()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Check Status
+
+            </button>
+
+        </div>
+
+
+        <div id="trackingResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN LOGIN
+===================================================== -->
+
+<section id="adminLogin" class="page">
+
+    <div class="container login-container">
+
+        <div class="login-card">
+
+            <div class="admin-icon">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+            </div>
+
+            <h1>
+                Admin Portal
+            </h1>
+
+            <p>
+                Procurement Centre Administration
+            </p>
+
+
+            <form onsubmit="adminLogin(event)">
+
+                <label>
+                    Centre ID
+                </label>
+
+                <input
+                    type="text"
+                    id="centerId"
+                    placeholder="Enter Centre ID"
+                    required>
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter password"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn full-btn">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <div class="demo-login">
+
+                <strong>Demo Login</strong>
+
+                <p>
+                    Centre ID: <b>CENTER-A</b>
+                </p>
+
+                <p>
+                    Password: <b>admin123</b>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section id="adminDashboard" class="page">
+
+    <div class="container">
+
+        <div class="admin-header">
+
+            <div>
+
+                <span class="section-badge">
+                    Admin Portal
+                </span>
+
+                <h1>
+                    Procurement Centre Dashboard
+                </h1>
+
+                <p id="loggedCenter">
+                    Centre
+                </p>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                onclick="adminLogout()">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <h3 id="totalBookings">
+                    0
+                </h3>
+
+                <p>
+                    Total Bookings
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3 id="completedBookings">
+                    0
+                </h3>
+
+                <p>
+                    Completed
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <h3 id="pendingBookings">
+                    0
+                </h3>
+
+                <p>
+                    Pending
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-wheat-awn"></i>
+
+                <h3 id="totalCropListings">
+                    0
+                </h3>
+
+                <p>
+                    Crop Listings
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BOOKINGS -->
+
+        <div class="table-container">
+
+            <h2>
+                Farmer Bookings
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Booking ID</th>
+                            <th>Farmer</th>
+                            <th>Phone</th>
+                            <th>Crop</th>
+                            <th>Quantity</th>
+                            <th>Slot</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="adminTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- CROP LISTINGS -->
+
+        <div class="table-container">
+
+            <h2>
+                Farmer Crop Listings
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Farmer</th>
+                            <th>Phone</th>
+                            <th>Crop</th>
+                            <th>Quantity</th>
+                            <th>Village</th>
+                            <th>Government Price</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="adminCropTable">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUCCESS MODAL
+===================================================== -->
+
+<div id="successModal"
+     class="modal">
+
+    <div class="modal-content">
+
+        <i class="fa-solid fa-circle-check success-icon"></i>
+
+        <h2>
+            Booking Confirmed!
+        </h2>
+
+        <p id="successMessage"></p>
+
+        <button
+            class="primary-btn"
+            onclick="closeModal()">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 Kisan Procurement Portal
+    </p>
+
+    <p>
+        Government Procurement Service
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
