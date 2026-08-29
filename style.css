@@ -55,11 +55,17 @@ header {
     color: #dcfce7;
 }
 
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
 nav {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 nav button {
@@ -74,6 +80,34 @@ nav button {
 
 nav button:hover {
     background: rgba(255,255,255,0.15);
+}
+
+
+/* =====================================================
+   LANGUAGE SWITCH BUTTON
+===================================================== */
+
+.language-switcher {
+    background: white;
+    color: #14532d;
+    border: 2px solid white;
+    padding: 8px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.language-switcher:hover {
+    background: #dcfce7;
+    color: #166534;
+    transform: translateY(-1px);
+}
+
+.language-switcher i {
+    margin-right: 5px;
 }
 
 
@@ -802,6 +836,11 @@ footer p {
         font-size: 12px;
     }
 
+    .language-switcher {
+        font-size: 12px;
+        padding: 7px 11px;
+    }
+
     .hero {
         min-height: 420px;
     }
@@ -840,6 +879,11 @@ footer p {
     }
 }
 
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
 @media(max-width: 450px) {
 
     .container {
@@ -856,6 +900,11 @@ footer p {
 
     nav button {
         padding: 7px 6px;
+    }
+
+    .language-switcher {
+        padding: 7px 9px;
+        font-size: 11px;
     }
 
     .hero h1 {
