@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kisan Procurement Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="logo">
+        <i class="fa-solid fa-seedling"></i>
+        <div>
+            <h2>Kisan Procurement Portal</h2>
+            <span>किसान खरीद पोर्टल</span>
+        </div>
+    </div>
+
+    <nav>
+        <button onclick="showPage('home')">Home / होम</button>
+        <button onclick="showPage('booking')">Book Slot</button>
+        <button onclick="showPage('track')">Track Status</button>
+        <button onclick="showPage('admin')">Admin</button>
+    </nav>
+</header>
+
+
+<!-- ================= HOME PAGE ================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div>
+            <h1>Welcome to Kisan Procurement Portal</h1>
+
+            <h2>किसान खरीद केंद्र पोर्टल</h2>
+
+            <p>
+                Book your procurement centre slot easily and avoid long queues.
+                अपना स्लॉट बुक करें और लंबी कतारों से बचें।
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                    onclick="showPage('booking')">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Book Slot / स्लॉट बुक करें
+                </button>
+
+                <button class="secondary-btn"
+                    onclick="showPage('track')">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Track Status
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+            <i class="fa-solid fa-user-plus"></i>
+            <h3>Easy Registration</h3>
+            <p>सरल किसान पंजीकरण</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-clock"></i>
+            <h3>Smart Slot Booking</h3>
+            <p>स्मार्ट स्लॉट सुझाव</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-list-ol"></i>
+            <h3>Queue Tracking</h3>
+            <p>कतार की जानकारी</p>
+        </div>
+
+        <div class="feature-card">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <h3>Payment Status</h3>
+            <p>भुगतान स्थिति</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOKING PAGE ================= -->
+
+<section id="booking" class="page">
+
+    <div class="container">
+
+        <h1>Farmer Registration & Slot Booking</h1>
+        <p>किसान पंजीकरण और स्लॉट बुकिंग</p>
+
+        <div class="form-card">
+
+            <h2>Farmer Details / किसान विवरण</h2>
+
+            <form id="farmerForm">
+
+                <div class="form-grid">
+
+                    <div>
+                        <label>Farmer Name / किसान का नाम</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required>
+                    </div>
+
+                    <div>
+                        <label>Phone Number / मोबाइल नंबर</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="10 digit phone number"
+                            maxlength="10"
+                            required>
+                    </div>
+
+                    <div>
+                        <label>Aadhaar / Farmer ID</label>
+                        <input
+                            type="text"
+                            id="farmerId"
+                            placeholder="Enter Aadhaar or Farmer ID"
+                            required>
+                    </div>
+
+                    <div>
+                        <label>Village / गांव</label>
+                        <input
+                            type="text"
+                            id="village"
+                            placeholder="Enter village name"
+                            required>
+                    </div>
+
+                    <div>
+                        <label>Crop Type / फसल</label>
+
+                        <select id="crop" required onchange="suggestSlots()">
+                            <option value="">Select Crop</option>
+                            <option value="Wheat">Wheat / गेहूं</option>
+                            <option value="Rice">Rice / धान</option>
+                            <option value="Maize">Maize / मक्का</option>
+                            <option value="Mustard">Mustard / सरसों</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Expected Quantity (Quintal)</label>
+                        <input
+                            type="number"
+                            id="quantity"
+                            placeholder="Expected quantity"
+                            required
+                            onchange="suggestSlots()">
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SMART SLOT SUGGESTIONS -->
+
+        <div id="recommendationSection" class="recommendation-section">
+
+            <h2>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Smart Slot Suggestions
+            </h2>
+
+            <p>
+                Based on your crop type and current crowd levels,
+                we recommend these slots.
+            </p>
+
+            <div id="recommendedSlots"
+                class="slot-cards">
+
+                <p class="info-message">
+                    Select crop type and quantity to get smart recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ALL AVAILABLE SLOTS -->
+
+        <div class="all-slots">
+
+            <h2>All Available Slots / सभी उपलब्ध स्लॉट</h2>
+
+            <div id="allSlots"
+                class="slot-cards">
+            </div>
+
+        </div>
+
+
+        <!-- SELECTED SLOT -->
+
+        <div id="selectedSlotBox"
+            class="selected-slot-box">
+
+            <h3>Selected Slot / चुना गया स्लॉट</h3>
+
+            <p id="selectedSlotText">
+                No slot selected
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="confirmBooking()">
+
+                Confirm Booking / बुकिंग कन्फर्म करें
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TRACK STATUS PAGE ================= -->
+
+<section id="track" class="page">
+
+    <div class="container">
+
+        <h1>Track Your Booking</h1>
+
+        <div class="track-box">
+
+            <input
+                type="text"
+                id="searchBooking"
+                placeholder="Enter Phone Number or Booking ID">
+
+            <button
+                class="primary-btn"
+                onclick="trackBooking()">
+
+                Check Status / स्थिति देखें
+
+            </button>
+
+        </div>
+
+
+        <div id="trackingResult"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section id="admin" class="page">
+
+    <div class="container">
+
+        <h1>Procurement Centre Dashboard</h1>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3 id="totalBookings">0</h3>
+                <p>Total Booked Today</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="completedBookings">0</h3>
+                <p>Completed</p>
+            </div>
+
+            <div class="stat-card">
+                <h3 id="pendingBookings">0</h3>
+                <p>Pending</p>
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <h2>Today's Bookings</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Token</th>
+                        <th>Farmer</th>
+                        <th>Phone</th>
+                        <th>Crop</th>
+                        <th>Slot</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOKING SUCCESS MODAL ================= -->
+
+<div id="successModal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <i class="fa-solid fa-circle-check success-icon"></i>
+
+        <h2>Booking Confirmed!</h2>
+
+        <p id="successMessage"></p>
+
+        <button
+            class="primary-btn"
+            onclick="closeModal()">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>
+        © 2026 Kisan Procurement Portal |
+        Government Procurement Service
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
